@@ -15,106 +15,74 @@
   body{min-height:100vh}
   .wrap{max-width:1200px;margin:0 auto;padding:32px 28px 80px}
 
-  header.hero{
-    border:1px solid var(--line);border-radius:16px;
-    background:radial-gradient(1200px 400px at 10% -20%, rgba(91,141,239,.25), transparent 60%),
-               radial-gradient(900px 300px at 100% 0%, rgba(122,240,201,.18), transparent 60%),
-               linear-gradient(180deg,#121a36 0%, #0e1530 100%);
-    padding:36px 36px 28px;margin-bottom:24px;
-  }
-  .badge{display:inline-block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);
-         border:1px solid rgba(122,240,201,.4);padding:4px 10px;border-radius:999px;margin-bottom:14px}
+  header.hero{border:1px solid var(--line);border-radius:16px;background:radial-gradient(1200px 400px at 10% -20%, rgba(91,141,239,.25), transparent 60%), radial-gradient(900px 300px at 100% 0%, rgba(122,240,201,.18), transparent 60%), linear-gradient(180deg,#121a36 0%, #0e1530 100%);padding:36px 36px 28px;margin-bottom:24px;}
+  .badge{display:inline-block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);border:1px solid rgba(122,240,201,.4);padding:4px 10px;border-radius:999px;margin-bottom:14px}
   h1{font-size:34px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
   h1 span{color:var(--accent)}
   .subtitle{color:var(--muted);font-size:15px;margin-bottom:22px}
-
   .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
   .stat{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px}
   .stat .num{font-size:22px;font-weight:700;color:var(--accent2)}
   .stat .lbl{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
-
-  /* nav */
-  nav.toc{
-    position:sticky;top:0;z-index:10;background:rgba(11,16,32,.85);backdrop-filter:blur(8px);
-    border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:24px;
-    display:flex;flex-wrap:wrap;gap:6px;
-  }
-  nav.toc a{flex:1;min-width:120px;text-align:center;color:var(--muted);text-decoration:none;
-            font-size:12.5px;padding:9px 8px;border-radius:8px;transition:.15s}
+  nav.toc{position:sticky;top:0;z-index:10;background:rgba(11,16,32,.85);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:6px}
+  nav.toc a{flex:1;min-width:120px;text-align:center;color:var(--muted);text-decoration:none;font-size:12.5px;padding:9px 8px;border-radius:8px;transition:.15s}
   nav.toc a:hover{color:var(--ink);background:rgba(91,141,239,.12)}
   nav.toc a.active{color:#fff;background:linear-gradient(180deg,#3b6df0,#2b53c5)}
-
-  section{
-    background:var(--panel);border:1px solid var(--line);border-radius:16px;
-    padding:28px 28px 26px;margin-bottom:20px;scroll-margin-top:78px
-  }
+  section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 28px 26px;margin-bottom:20px;scroll-margin-top:78px}
   section h2{font-size:22px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
-  section h2 .step{font-size:12px;color:var(--accent);background:rgba(91,141,239,.12);
-                   border:1px solid rgba(91,141,239,.35);padding:3px 9px;border-radius:6px;letter-spacing:.06em}
-  section h3{font-size:15px;font-weight:600;color:var(--accent2);margin:18px 0 8px;
-             text-transform:uppercase;letter-spacing:.08em}
+  section h2 .step{font-size:12px;color:var(--accent);background:rgba(91,141,239,.12);border:1px solid rgba(91,141,239,.35);padding:3px 9px;border-radius:6px;letter-spacing:.06em}
+  section h3{font-size:15px;font-weight:600;color:var(--accent2);margin:18px 0 8px;text-transform:uppercase;letter-spacing:.08em}
   section p, section li{font-size:14px;color:#dde3f3}
   section p{margin-bottom:8px}
   ul{padding-left:20px}
   ul li{margin-bottom:5px}
   strong{color:#fff}
   em{color:var(--accent2);font-style:normal}
-
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-
   .card{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:12px;padding:16px}
   .card h4{font-size:14px;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-  .card .pill{font-size:10.5px;background:rgba(122,240,201,.12);color:var(--accent2);
-              border:1px solid rgba(122,240,201,.3);padding:2px 8px;border-radius:999px}
+  .card .pill{font-size:10.5px;background:rgba(122,240,201,.12);color:var(--accent2);border:1px solid rgba(122,240,201,.3);padding:2px 8px;border-radius:999px}
   .card.best{border-color:rgba(122,240,201,.5);box-shadow:0 0 0 1px rgba(122,240,201,.15) inset}
-
-  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;overflow-x:auto}
   th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
   th{background:rgba(91,141,239,.08);color:#cdd6f0;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.06em}
   tr:hover td{background:rgba(255,255,255,.02)}
   td.good{color:var(--good);font-weight:600}
   td.warn{color:var(--warn)}
   td.bad{color:var(--bad)}
-
-  .insight{border-left:3px solid var(--accent);background:rgba(91,141,239,.07);
-           padding:12px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
+  .insight{border-left:3px solid var(--accent);background:rgba(91,141,239,.07);padding:12px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
   .insight.ok{border-color:var(--good);background:rgba(122,240,201,.06)}
   .insight.warn{border-color:var(--warn);background:rgba(249,178,87,.07)}
   .insight.bad{border-color:var(--bad);background:rgba(239,111,108,.07)}
   .insight strong{display:block;margin-bottom:3px}
-
   .img{margin-top:14px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
-  .img img{display:block;width:100%;height:auto}
+  .img img{display:block;width:100%;height:auto;max-width:100%}
   .img + .caption{font-size:11.5px;color:var(--muted);text-align:center;margin-top:6px}
   .image-grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px;margin-top:14px}
-  .image-grid img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:10px}
-
+  .image-grid img{display:block;width:100%;height: 280px;;max-width:100%;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:10px}
   .pipe{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:14px 0}
-  .pipe .step-box{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;
-                  padding:10px;text-align:center;font-size:11.5px;position:relative}
+  .pipe .step-box{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;font-size:11.5px;position:relative}
   .pipe .step-box .n{font-size:10px;color:var(--accent);font-weight:700;letter-spacing:.1em}
   .pipe .step-box .t{color:#fff;font-weight:600;font-size:12px;margin-top:2px}
   .pipe .step-box .d{color:var(--muted);font-size:10.5px;margin-top:3px}
-
   footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
   footer .div{height:1px;background:var(--line);margin:0 auto 16px;max-width:300px}
-
   @media (max-width:900px){
     .grid2,.grid3,.stats,.image-grid{grid-template-columns:1fr}
     .pipe{grid-template-columns:repeat(2,1fr)}
+    .wrap{padding:20px 14px 60px}
+    header.hero{padding:24px 20px}
+    h1{font-size:28px}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-
-<!-- HERO -->
 <header class="hero">
   <span class="badge">Advanced Business Analytics · DTU · 2026</span>
   <h1>Forecasting Bus Delays on the <span>B41 Route</span></h1>
-  <p class="subtitle">A multi-horizon forecasting pipeline combining feature engineering, linear baselines,
-     LSTM sequence-to-sequence models, and quantile regression with conformal calibration — for the MTA New York City B41 line.</p>
+  <p class="subtitle">A multi-horizon forecasting pipeline combining feature engineering, linear baselines, LSTM sequence-to-sequence models, and quantile regression with conformal calibration — for the MTA New York City B41 line.</p>
   <div class="stats">
     <div class="stat"><div class="num">348K+</div><div class="lbl">GPS pings</div></div>
     <div class="stat"><div class="num">5,728</div><div class="lbl">30-min windows</div></div>
@@ -123,8 +91,6 @@
     <div class="stat"><div class="num">4 models</div><div class="lbl">Baselines · Ridge · LSTM · QR</div></div>
   </div>
 </header>
-
-<!-- TOC -->
 <nav class="toc" id="toc">
   <a href="#overview">Overview</a>
   <a href="#data">1. Data Preparation</a>
@@ -136,15 +102,9 @@
   <a href="#qrlstm">7. QR LSTM</a>
   <a href="#conclusions">Conclusions</a>
 </nav>
-
-<!-- OVERVIEW -->
 <section id="overview">
   <h2>Project Overview</h2>
-  <p>Bus delays on the <strong>B41 Brooklyn route</strong> degrade rider experience and disrupt downstream operations.
-     Once a delay above 10 minutes appears, it tends to <em>persist</em>: there is roughly an 80% probability that the
-     line stays disrupted for at least 30 more minutes. This motivates a system that can <strong>forecast delays up to
-     6 hours ahead</strong>, leaving operators time to react.</p>
-
+  <p>Bus delays on the <strong>B41 Brooklyn route</strong> degrade rider experience and disrupt downstream operations. Once a delay above 10 minutes appears, it tends to <em>persist</em>: there is roughly an 80% probability that the line stays disrupted for at least 30 more minutes. This motivates a system that can <strong>forecast delays up to 6 hours ahead</strong>, leaving operators time to react.</p>
   <h3>End-to-end pipeline</h3>
   <div class="pipe">
     <div class="step-box"><div class="n">01</div><div class="t">Data Prep</div><div class="d">GPS → 30-min windows</div></div>
@@ -155,32 +115,15 @@
     <div class="step-box"><div class="n">07</div><div class="t">QR Ridge</div><div class="d">Quantiles + conformal</div></div>
     <div class="step-box"><div class="n">08</div><div class="t">QR LSTM</div><div class="d">Probabilistic deep model</div></div>
   </div>
-
   <div class="grid3">
-    <div class="card">
-      <h4>Goal <span class="pill">Operations</span></h4>
-      <p>Predict average delay on the B41 line at 12 horizons (t+30 min … t+6 h) and detect disruption events
-         (avg. delay > 10 min) for proactive dispatching.</p>
-    </div>
-    <div class="card">
-      <h4>Data <span class="pill">MTA Open Data</span></h4>
-      <p>Raw GPS bus positions enriched with weather (temperature, precipitation, wind) and binary public-event
-         indicators at 5 key stops along the route.</p>
-    </div>
-    <div class="card">
-      <h4>Approach <span class="pill">Comparative</span></h4>
-      <p>From simple baselines to deep sequence models, with explicit uncertainty quantification via quantile
-         regression and split-conformal calibration.</p>
-    </div>
+    <div class="card"><h4>Goal <span class="pill">Operations</span></h4><p>Predict average delay on the B41 line at 12 horizons (t+30 min … t+6 h) and detect disruption events (avg. delay > 10 min) for proactive dispatching.</p></div>
+    <div class="card"><h4>Data <span class="pill">MTA Open Data</span></h4><p>Raw GPS bus positions enriched with weather (temperature, precipitation, wind) and binary public-event indicators at 5 key stops along the route.</p></div>
+    <div class="card"><h4>Approach <span class="pill">Comparative</span></h4><p>From simple baselines to deep sequence models, with explicit uncertainty quantification via quantile regression and split-conformal calibration.</p></div>
   </div>
 </section>
-
-<!-- 1 DATA PREPARATION -->
 <section id="data">
   <h2><span class="step">STEP 01</span> B41 Data Preparation</h2>
-  <p>Four monthly raw MTA files (~1.3 GB each) were parsed and consolidated into a route-level time series
-     with consistent 30-minute windows.</p>
-
+  <p>Four monthly raw MTA files (~1.3 GB each) were parsed and consolidated into a route-level time series with consistent 30-minute windows.</p>
   <div class="grid2">
     <div>
       <h3>Processing pipeline</h3>
@@ -205,72 +148,27 @@
       </table>
     </div>
   </div>
-
-  <div class="insight">
-    <strong>Disruption persistence — the key motivating finding</strong>
-    Once average delay exceeds 10 min, there is an <em>~80% probability</em> the delay continues for at least
-    30 more minutes — strongly justifying multi-horizon forecasts as actionable, rather than purely informational.
-  </div>
+  <div class="insight"><strong>Disruption persistence — the key motivating finding</strong> Once average delay exceeds 10 min, there is an <em>~80% probability</em> the delay continues for at least 30 more minutes — strongly justifying multi-horizon forecasts as actionable, rather than purely informational.</div>
   <div class="img"><img src="a/disruption_persistence.png" alt="Disruption persistence"></div>
 </section>
-
-<!-- 2 FEATURE ENGINEERING -->
 <section id="features">
   <h2><span class="step">STEP 02</span> Feature Engineering</h2>
-  <p>The aggregated time series was enriched with exogenous and temporal signals to expose predictive structure
-     the models can exploit.</p>
-
+  <p>The aggregated time series was enriched with exogenous and temporal signals to expose predictive structure the models can exploit.</p>
   <div class="grid3">
-    <div class="card">
-      <h4>Time features</h4>
-      <ul>
-        <li>Hour-of-day, day-of-week, month — encoded as <em>cyclical sine/cosine</em> transforms</li>
-        <li>Binary <em>is_weekend</em>, <em>is_holiday</em> (US 2017 calendar)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>Lag features</h4>
-      <ul>
-        <li>Recent lags (<em>lag_1, lag_2, lag_12</em>) capture short-range autocorrelation</li>
-        <li><em>daily_lag</em> and <em>weekly_lag</em> capture seasonal periodicity</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>Exogenous</h4>
-      <ul>
-        <li><em>Weather:</em> temperature (°C), precipitation, wind speed (km/h)</li>
-        <li><em>Events:</em> binary indicators at 5 stops (Flatbush/Prospect Park, Livingston/Nevins, Flatbush/Bergen, Cadman Plaza, Flatbush/Plaza St)</li>
-      </ul>
-    </div>
+    <div class="card"><h4>Time features</h4><ul><li>Hour-of-day, day-of-week, month — encoded as <em>cyclical sine/cosine</em> transforms</li><li>Binary <em>is_weekend</em>, <em>is_holiday</em> (US 2017 calendar)</li></ul></div>
+    <div class="card"><h4>Lag features</h4><ul><li>Recent lags (<em>lag_1, lag_2, lag_12</em>) capture short-range autocorrelation</li><li><em>daily_lag</em> and <em>weekly_lag</em> capture seasonal periodicity</li></ul></div>
+    <div class="card"><h4>Exogenous</h4><ul><li><em>Weather:</em> temperature (°C), precipitation, wind speed (km/h)</li><li><em>Events:</em> binary indicators at 5 stops (Flatbush/Prospect Park, Livingston/Nevins, Flatbush/Bergen, Cadman Plaza, Flatbush/Plaza St)</li></ul></div>
   </div>
-
-  <div class="insight">
-    <strong>Event coverage</strong>
-    At least one public event was active near the B41 route in <em>56% of all 30-minute windows</em>, suggesting events
-    are an under-appreciated driver of disruption. The final modelling table contains <strong>26 features</strong> per window.
-  </div>
+  <div class="insight"><strong>Event coverage</strong> At least one public event was active near the B41 route in <em>56% of all 30-minute windows</em>, suggesting events are an under-appreciated driver of disruption. The final modelling table contains <strong>26 features</strong> per window.</div>
 </section>
-
-<!-- 3 BASELINES -->
 <section id="baselines">
   <h2><span class="step">STEP 04</span> Baseline Models</h2>
   <p>Three baselines establish a performance floor and isolate the value added by more complex models.</p>
-
   <div class="grid3">
-    <div class="card">
-      <h4>Persistence</h4>
-      <p>Projects the current delay forward unchanged. Strong at very short horizons, decays quickly.</p>
-    </div>
-    <div class="card">
-      <h4>Historical Mean</h4>
-      <p>Average delay by hour-of-day × day-of-week. Stable across horizons, ignores recent dynamics.</p>
-    </div>
-    <div class="card best">
-      <h4>Ridge Regression <span class="pill">Best baseline</span></h4>
-      <p>Linear model on 26 engineered features. Best balance of short-horizon accuracy and graceful long-horizon decay.</p>
-    </div>
+    <div class="card"><h4>Persistence</h4><p>Projects the current delay forward unchanged. Strong at very short horizons, decays quickly.</p></div>
+    <div class="card"><h4>Historical Mean</h4><p>Average delay by hour-of-day × day-of-week. Stable across horizons, ignores recent dynamics.</p></div>
+    <div class="card best"><h4>Ridge Regression <span class="pill">Best baseline</span></h4><p>Linear model on 26 engineered features. Best balance of short-horizon accuracy and graceful long-horizon decay.</p></div>
   </div>
-
   <h3>Ridge — full results on test set (December 2017)</h3>
   <table>
     <thead><tr><th>Horizon</th><th>MAE (min)</th><th>RMSE</th><th>R²</th><th>F1 (disruption)</th><th>Precision</th><th>Recall</th></tr></thead>
@@ -283,26 +181,16 @@
       <tr><td>t+360 min</td><td>3.73</td><td>5.22</td><td>0.10</td><td class="bad">0.12</td><td>0.59</td><td class="bad">0.07</td></tr>
     </tbody>
   </table>
-
   <div class="grid2">
     <div class="img"><img src="a/baseline_mae_horizon.png" alt="MAE vs horizon"></div>
     <div class="img"><img src="a/baseline_scatter.png" alt="Predicted vs actual"></div>
   </div>
   <div class="img" style="margin-top:14px"><img src="a/baseline_ridge_coef.png" alt="Ridge coefficients"></div>
-
-  <div class="insight ok">
-    <strong>Interpretation</strong>
-    Recent lags dominate at short horizons (strong autocorrelation); time-of-day and day-of-week features take over at long
-    horizons as autocorrelation decays. Ridge improves on Persistence at <em>t+30 min</em> and on Historical Mean at all horizons up to ~3 h.
-  </div>
+  <div class="insight ok"><strong>Interpretation</strong> Recent lags dominate at short horizons (strong autocorrelation); time-of-day and day-of-week features take over at long horizons as autocorrelation decays. Ridge improves on Persistence at <em>t+30 min</em> and on Historical Mean at all horizons up to ~3 h.</div>
 </section>
-
-<!-- 4 DATASET -->
 <section id="dataset">
   <h2><span class="step">STEP 05</span> Dataset for Model Training</h2>
-  <p>For sequence-based models, the windowed data was reorganised into <strong>4 continuous segments</strong>
-     (one per month), each preserving chronological order without artificial gap-filling.</p>
-
+  <p>For sequence-based models, the windowed data was reorganised into <strong>4 continuous segments</strong> (one per month), each preserving chronological order without artificial gap-filling.</p>
   <div class="grid2">
     <div>
       <h3>Why segments?</h3>
@@ -328,14 +216,9 @@
     </div>
   </div>
 </section>
-
-<!-- 5 LSTM -->
 <section id="lstm">
   <h2><span class="step">STEP 06</span> LSTM Sequence-to-Sequence</h2>
-  <p>A Seq2Seq architecture inspired by Sutskever et al. (2014): an <strong>encoder LSTM</strong> compresses the
-     past 9 hours into a context vector, and a <strong>decoder LSTM</strong> auto-regressively predicts the next 12 half-hours,
-     conditioned on known future exogenous variables (weather, calendar, events).</p>
-
+  <p>A Seq2Seq architecture inspired by Sutskever et al. (2014): an <strong>encoder LSTM</strong> compresses the past 9 hours into a context vector, and a <strong>decoder LSTM</strong> auto-regressively predicts the next 12 half-hours, conditioned on known future exogenous variables (weather, calendar, events).</p>
   <div class="grid2">
     <div>
       <h3>Architecture</h3>
@@ -356,25 +239,12 @@
         </tbody>
       </table>
     </div>
-    <div class="card">
-      <h4>Why is the LSTM flatter than Ridge?</h4>
-      <p>Two reinforcing factors:</p>
-      <ul>
-        <li><strong>Limited data</strong> — only 4 non-consecutive months. Deep recurrent models are data-hungry; the inductive bias of Ridge wins on this regime.</li>
-        <li><strong>Strong linear autocorrelation</strong> — for short horizons, the lag-based linear model already captures most of the signal.</li>
-      </ul>
-      <p style="margin-top:10px">However, the LSTM degrades <em>more gracefully</em> at long horizons (its 6-h MAE ≈ 4.5 vs Ridge's 3.7 is closer than at short horizons), and provides a foundation for the probabilistic QR-LSTM.</p>
-    </div>
+    <div class="card"><h4>Why is the LSTM flatter than Ridge?</h4><p>Two reinforcing factors:</p><ul><li><strong>Limited data</strong> — only 4 non-consecutive months. Deep recurrent models are data-hungry; the inductive bias of Ridge wins on this regime.</li><li><strong>Strong linear autocorrelation</strong> — for short horizons, the lag-based linear model already captures most of the signal.</li></ul><p style="margin-top:10px">However, the LSTM degrades <em>more gracefully</em> at long horizons (its 6-h MAE ≈ 4.5 vs Ridge's 3.7 is closer than at short horizons), and provides a foundation for the probabilistic QR-LSTM.</p></div>
   </div>
 </section>
-
-<!-- 6 QR RIDGE -->
 <section id="qrridge">
   <h2><span class="step">STEP 07</span> Quantile Regression Ridge + Conformal</h2>
-  <p>Point forecasts are not enough for operational use: dispatchers need <em>prediction intervals</em>.
-     We train Ridge models for the Q10, Q50, and Q90 quantiles, then apply <strong>split-conformal calibration</strong>
-     to guarantee coverage close to the nominal 80%.</p>
-
+  <p>Point forecasts are not enough for operational use: dispatchers need <em>prediction intervals</em>. We train Ridge models for the Q10, Q50, and Q90 quantiles, then apply <strong>split-conformal calibration</strong> to guarantee coverage close to the nominal 80%.</p>
   <div class="grid2">
     <div>
       <h3>Method</h3>
@@ -385,18 +255,11 @@
         <li>Interval quality measured by <em>coverage</em>, <em>width</em>, and <em>pinball loss</em></li>
       </ul>
     </div>
-    <div class="card best">
-      <h4>Headline — best overall pipeline <span class="pill">+ Conformal</span></h4>
-      <p>Sharp short-horizon intervals with <strong>~88% coverage at t+30 min</strong> (slightly conservative, by design),
-         and median-forecast MAE that <em>matches or beats Ridge</em> while delivering calibrated uncertainty bands for free.</p>
-    </div>
+    <div class="card best"><h4>Headline — best overall pipeline <span class="pill">+ Conformal</span></h4><p>Sharp short-horizon intervals with <strong>~88% coverage at t+30 min</strong> (slightly conservative, by design), and median-forecast MAE that <em>matches or beats Ridge</em> while delivering calibrated uncertainty bands for free.</p></div>
   </div>
-
   <h3>Per-horizon test diagnostics — QR Ridge + Conformal</h3>
   <table>
-    <thead>
-      <tr><th>Horizon</th><th>MAE</th><th>RMSE</th><th>R²</th><th>Coverage 80</th><th>Width 80</th><th>Pinball Q50</th><th>F1</th></tr>
-    </thead>
+    <thead><tr><th>Horizon</th><th>MAE</th><th>RMSE</th><th>R²</th><th>Coverage 80</th><th>Width 80</th><th>Pinball Q50</th><th>F1</th></tr></thead>
     <tbody>
       <tr><td>t+30 min</td><td class="good">1.56</td><td>2.13</td><td class="good">0.85</td><td class="good">0.89</td><td>6.28</td><td>0.78</td><td class="good">0.86</td></tr>
       <tr><td>t+60 min</td><td class="good">2.08</td><td>2.82</td><td class="good">0.74</td><td class="good">0.82</td><td>7.12</td><td>1.04</td><td class="good">0.78</td></tr>
@@ -408,7 +271,7 @@
       <tr><td>t+360 min</td><td>3.82</td><td>5.39</td><td>0.04</td><td>0.86</td><td>14.22</td><td>1.91</td><td class="bad">0.05</td></tr>
     </tbody>
   </table>
-    <div class="image-grid">
+  <div class="image-grid">
     <div class="plot-box">
       <img src="a/Coverage80_val_test.png" alt="Coverage 80 validation test plot">
     </div>
@@ -416,21 +279,12 @@
       <img src="a/CoverageCalibrated.png" alt="Coverage calibrated plot">
     </div>
   </div>
-  <div class="img" style="margin-top:14px"><img src="a/uncertainty_timeseries.png" alt="Time series with intervals"></div>
-
-  <div class="insight ok">
-    <strong>Why conformal calibration matters</strong>
-    Without it, raw QR intervals reached only <em>40.9% coverage</em> against the 80% target. Adding split-conformal
-    correction restores nominal coverage uniformly across horizons — and it is distribution-free.
-  </div>
+<div class="img"><img src="a/uncertainty_timeseries.png" alt="Uncertainty timeseries plot"></div>
+  <div class="insight ok"><strong>Why conformal calibration matters</strong> Without it, raw QR intervals reached only <em>40.9% coverage</em> against the 80% target. Adding split-conformal correction restores nominal coverage uniformly across horizons — and it is distribution-free.</div>
 </section>
-
-<!-- 7 QR LSTM -->
 <section id="qrlstm">
   <h2><span class="step">STEP 08</span> Quantile Regression LSTM</h2>
-  <p>The probabilistic counterpart of the LSTM: the same Seq2Seq backbone, but with a <strong>quantile output head</strong>
-     producing Q10, Q50, Q90 trained jointly under the pinball loss.</p>
-
+  <p>The probabilistic counterpart of the LSTM: the same Seq2Seq backbone, but with a <strong>quantile output head</strong> producing Q10, Q50, Q90 trained jointly under the pinball loss.</p>
   <div class="grid2">
     <div>
       <h3>Method</h3>
@@ -455,23 +309,14 @@
           <tr><td>Pinball Q10 / Q50 / Q90</td><td>0.63 / 2.42 / 1.42</td></tr>
         </tbody>
       </table>
-
-      <div class="insight warn" style="margin-top:14px">
-        <strong>Trade-off</strong>
-        The QR-LSTM achieves <em>well-calibrated coverage</em> but with wider intervals and higher MAE than QR-Ridge.
-        With more training data (a full year) and deeper architectures, the LSTM is expected to overtake the linear model;
-        on 4 months of data, <strong>QR Ridge + Conformal remains the winner</strong>.
-      </div>
+      <div class="insight warn" style="margin-top:14px"><strong>Trade-off</strong> The QR-LSTM achieves <em>well-calibrated coverage</em> but with wider intervals and higher MAE than QR-Ridge. With more training data (a full year) and deeper architectures, the LSTM is expected to overtake the linear model; on 4 months of data, <strong>QR Ridge + Conformal remains the winner</strong>.</div>
     </div>
   </div>
-  <div class="img"><img src="a/CalibrationPipeline.png" alt="Calibration pipeline plot"></div>
-  <div class="img"><img src="a/LSTM_TestSetOriginal_Timeseries.png" alt="LSTM uncertainty timeseries plot"></div>
+    <div class="img"><img src="a/CalibrationPipeline.png" alt="Calibration pipeline plot"></div>
+    <div class="img"><img src="a/LSTM_TestSetOriginal_Timeseries.png" alt="LSTM uncertainty timeseries plot"></div>
 </section>
-
-<!-- CONCLUSIONS -->
 <section id="conclusions">
   <h2>Conclusions &amp; Recommendations</h2>
-
   <h3>Model comparison — point forecast</h3>
   <table>
     <thead><tr><th>Model</th><th>MAE t+30</th><th>MAE t+180</th><th>MAE t+360</th><th>Calibrated intervals</th><th>Verdict</th></tr></thead>
@@ -485,20 +330,10 @@
     </tbody>
   </table>
   <p style="font-size:11.5px;color:var(--muted);margin-top:6px">* aggregate test MAE across horizons</p>
-
   <div class="grid2" style="margin-top:18px">
-    <div class="insight ok">
-      <strong>What works today</strong>
-      A <em>QR Ridge + Conformal</em> pipeline delivers ≤ 1.6 min point error and 80%-calibrated intervals at the 30-minute
-      horizon. Operationally usable for dispatcher alerts up to ~2 hours ahead with F1 ≥ 0.6.
-    </div>
-    <div class="insight warn">
-      <strong>What needs more data</strong>
-      LSTM and QR-LSTM under-perform on 4 non-consecutive months. With a full year of contiguous data, the deep
-      probabilistic model is expected to capture event interactions and non-linear dynamics that linear quantiles miss.
-    </div>
+    <div class="insight ok"><strong>What works today</strong> A <em>QR Ridge + Conformal</em> pipeline delivers ≤ 1.6 min point error and 80%-calibrated intervals at the 30-minute horizon. Operationally usable for dispatcher alerts up to ~2 hours ahead with F1 ≥ 0.6.</div>
+    <div class="insight warn"><strong>What needs more data</strong> LSTM and QR-LSTM under-perform on 4 non-consecutive months. With a full year of contiguous data, the deep probabilistic model is expected to capture event interactions and non-linear dynamics that linear quantiles miss.</div>
   </div>
-
   <h3>Recommendations</h3>
   <ol style="padding-left:22px">
     <li><strong>Deploy QR Ridge + Conformal</strong> for the 30-min to 2-h dispatcher-alert window. Trigger an alert when Q50 &gt; 10 min, escalate when Q10 &gt; 10 min.</li>
@@ -508,15 +343,12 @@
     <li><strong>Monitor calibration weekly</strong>: track empirical coverage and MAE drift; recalibrate the conformal residuals quarterly.</li>
   </ol>
 </section>
-
 <footer>
   <div class="div"></div>
   <p>B41 Bus Delay Forecasting · Advanced Business Analytics · DTU 2026</p>
   <p>Data: MTA NYC 2017 · Pipeline: Pandas · scikit-learn · PyTorch</p>
 </footer>
-
 </div>
-
 <script>
   const links = document.querySelectorAll('nav.toc a');
   const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
