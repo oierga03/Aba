@@ -153,13 +153,13 @@
 </section>
 <section id="features">
   <h2><span class="step">STEP 02</span> Feature Engineering</h2>
-  <p>The aggregated time series was enriched with exogenous and temporal signals to expose predictive structure the models can exploit.</p>
-  <div class="grid3">
-    <div class="card"><h4>Time features</h4><ul><li>Hour-of-day, day-of-week, month — encoded as <em>cyclical sine/cosine</em> transforms</li><li>Binary <em>is_weekend</em>, <em>is_holiday</em> (US 2017 calendar)</li></ul></div>
-    <div class="card"><h4>Lag features</h4><ul><li>Recent lags (<em>lag_1, lag_2, lag_12</em>) capture short-range autocorrelation</li><li><em>daily_lag</em> and <em>weekly_lag</em> capture seasonal periodicity</li></ul></div>
-    <div class="card"><h4>Exogenous</h4><ul><li><em>Weather:</em> temperature (°C), precipitation, wind speed (km/h)</li><li><em>Events:</em> binary indicators at 5 stops (Flatbush/Prospect Park, Livingston/Nevins, Flatbush/Bergen, Cadman Plaza, Flatbush/Plaza St)</li></ul></div>
+  <p>The aggregated time series was enriched with exogenous and temporal signals to expose predictive structure the models can exploit. The final feature set contains <strong>26 features</strong> per window.</p>
+  <div class="grid2">
+    <div class="card"><h4>Lag features</h4><ul><li>Delay 30 min, 1 h, 1.5 h, 2 h, 3 h, 6 h and 24 h back (<em>lag_1</em> to <em>lag_48</em>)</li><li><em>delay_trend</em> = lag_1 − lag_2: captures whether delay is rising or recovering</li></ul></div>
+    <div class="card"><h4>Calendar features</h4><ul><li>Hour-of-day, day-of-week, month number</li><li>Binary <em>is_weekend</em>, <em>is_rush</em> (07:00–09:00 and 16:00–19:00)</li></ul></div>
+    <div class="card"><h4>Weather</h4><ul><li>Temperature, precipitation, wind speed</li><li>Rain slows passenger boarding and increases traffic around stops</li></ul></div>
+    <div class="card"><h4>Events</h4><ul><li>Binary flags at 5 venues along the B41 corridor</li><li>Anticipates crowding pressure before it shows in delay data</li></ul></div>
   </div>
-  <div class="insight"><strong>Event coverage</strong> At least one public event was active near the B41 route in <em>56% of all 30-minute windows</em>, suggesting events are an under-appreciated driver of disruption. The final modelling table contains <strong>26 features</strong> per window.</div>
 </section>
 <section id="baselines">
   <h2><span class="step">STEP 04</span> Baseline Models</h2>
@@ -167,26 +167,22 @@
   <div class="grid3">
     <div class="card"><h4>Persistence</h4><p>Projects the current delay forward unchanged. Strong at very short horizons, decays quickly.</p></div>
     <div class="card"><h4>Historical Mean</h4><p>Average delay by hour-of-day × day-of-week. Stable across horizons, ignores recent dynamics.</p></div>
-    <div class="card best"><h4>Ridge Regression <span class="pill">Best baseline</span></h4><p>Linear model on 26 engineered features. Best balance of short-horizon accuracy and graceful long-horizon decay.</p></div>
+    <div class="card"><h4>Ridge Regression</h4><p>Linear model on 26 engineered features. Best balance of short-horizon accuracy and graceful long-horizon decay.</p></div>
   </div>
   <h3>Ridge — full results on test set (December 2017)</h3>
   <table>
-    <thead><tr><th>Horizon</th><th>MAE (min)</th><th>RMSE</th><th>R²</th><th>F1 (disruption)</th><th>Precision</th><th>Recall</th></tr></thead>
+    <thead><tr><th>Horizon</th><th>MAE (min)</th><th>F1 (disruption)</th><th>Precision</th></tr></thead>
     <tbody>
-      <tr><td>t+30 min</td><td class="good">1.65</td><td>2.25</td><td class="good">0.83</td><td class="good">0.85</td><td class="good">0.92</td><td>0.79</td></tr>
-      <tr><td>t+60 min</td><td class="good">2.23</td><td>3.07</td><td>0.69</td><td class="good">0.74</td><td>0.87</td><td>0.65</td></tr>
-      <tr><td>t+90 min</td><td>2.64</td><td>3.67</td><td>0.56</td><td>0.67</td><td>0.88</td><td>0.54</td></tr>
-      <tr><td>t+120 min</td><td>3.01</td><td>4.19</td><td>0.43</td><td>0.58</td><td>0.86</td><td>0.43</td></tr>
-      <tr><td>t+180 min</td><td>3.50</td><td>4.87</td><td>0.22</td><td class="warn">0.34</td><td>0.82</td><td>0.21</td></tr>
-      <tr><td>t+360 min</td><td>3.73</td><td>5.22</td><td>0.10</td><td class="bad">0.12</td><td>0.59</td><td class="bad">0.07</td></tr>
+      <tr><td>t+30 min</td><td class="good">1.65</td><td class="good">0.85</td><td class="good">0.92</td></tr>
+      <tr><td>t+60 min</td><td class="good">2.23</td><td class="good">0.74</td><td>0.87</td></tr>
+      <tr><td>t+90 min</td><td>2.64</td><td>0.67</td><td>0.88</td></tr>
+      <tr><td>t+120 min</td><td>3.01</td><td>0.58</td><td>0.86</td></tr>
+      <tr><td>t+180 min</td><td>3.50</td><td class="warn">0.34</td><td>0.82</td></tr>
+      <tr><td>t+360 min</td><td>3.73</td><td class="bad">0.12</td><td>0.59</td></tr>
     </tbody>
   </table>
-  <div class="grid2">
-    <div class="img"><img src="a/baseline_mae_horizon.png" alt="MAE vs horizon"></div>
-    <div class="img"><img src="a/baseline_scatter.png" alt="Predicted vs actual"></div>
-  </div>
-  <div class="img" style="margin-top:14px"><img src="a/baseline_ridge_coef.png" alt="Ridge coefficients"></div>
-  <div class="insight ok"><strong>Interpretation</strong> Recent lags dominate at short horizons (strong autocorrelation); time-of-day and day-of-week features take over at long horizons as autocorrelation decays. Ridge improves on Persistence at <em>t+30 min</em> and on Historical Mean at all horizons up to ~3 h.</div>
+  <div class="img"><img src="a/baseline_mae_horizon.png" alt="MAE vs horizon"></div>
+  <div class="insight ok"><strong>Two-regime boundary</strong> Up to ~2 hours ahead, Ridge is up to <em>45% more accurate</em> than Historical Mean. Lag features carry the signal. Beyond 2 hours the lag signal decays, time-of-day patterns dominate, and Historical Mean catches up. At <em>t+30 min</em>: <strong>MAE 1.6 min, Precision 91%</strong>.</div>
 </section>
 <section id="dataset">
   <h2><span class="step">STEP 05</span> Dataset for Model Training</h2>
@@ -241,6 +237,9 @@
     </div>
     <div class="card"><h4>Why is the LSTM flatter than Ridge?</h4><p>Two reinforcing factors:</p><ul><li><strong>Limited data</strong> — only 4 non-consecutive months. Deep recurrent models are data-hungry; the inductive bias of Ridge wins on this regime.</li><li><strong>Strong linear autocorrelation</strong> — for short horizons, the lag-based linear model already captures most of the signal.</li></ul><p style="margin-top:10px">However, the LSTM degrades <em>more gracefully</em> at long horizons (its 6-h MAE ≈ 4.5 vs Ridge's 3.7 is closer than at short horizons), and provides a foundation for the probabilistic QR-LSTM.</p></div>
   </div>
+  <div class="img"><img src="a/Schema_Seq2Seq.png" alt="Calibration pipeline plot"></div>
+  <div class="img"><img src="a/curves_LSTM.png" alt="Calibration pipeline plot"></div>
+  <div class="img"><img src="a/inference_subplots.png" alt="Calibration pipeline plot"></div>
 </section>
 <section id="qrridge">
   <h2><span class="step">STEP 07</span> Quantile Regression Ridge + Conformal</h2>
