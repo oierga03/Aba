@@ -82,7 +82,7 @@
 <header class="hero">
   <span class="badge">Advanced Business Analytics · DTU · 2026</span>
   <h1>Forecasting Bus Delays on the <span>B41 Route</span></h1>
-  <p class="subtitle">A multi-horizon forecasting pipeline combining feature engineering, linear baselines, LSTM sequence-to-sequence models, and quantile regression with conformal calibration — for the MTA New York City B41 line.</p>
+  <p class="subtitle">A multi-horizon forecasting pipeline combining feature engineering, linear baselines, LSTM sequence-to-sequence models, and quantile regression with conformal calibration, for the MTA New York City B41 line.</p>
   <div class="stats">
     <div class="stat"><div class="num">348K+</div><div class="lbl">GPS pings</div></div>
     <div class="stat"><div class="num">5,728</div><div class="lbl">30-min windows</div></div>
@@ -128,7 +128,7 @@
     <div>
       <h3>Processing pipeline</h3>
       <ul>
-        <li><strong>Source:</strong> MTA real-time bus GPS data — June, August, October and December 2017.</li>
+        <li><strong>Source:</strong> MTA real-time bus GPS data: June, August, October and December 2017.</li>
         <li><strong>Delay = ExpectedArrival − ScheduledArrival</strong>, with explicit handling of post-midnight times (24:xx → 00:xx).</li>
         <li><strong>Cleaning:</strong> delays clipped to [−10, +60] min to discard outliers.</li>
         <li><strong>Aggregation:</strong> both directions combined → route-level mean delay per 30-min window.</li>
@@ -148,7 +148,7 @@
       </table>
     </div>
   </div>
-  <div class="insight"><strong>Disruption persistence — the key motivating finding</strong> Once average delay exceeds 10 min, there is an <em>~80% probability</em> the delay continues for at least 30 more minutes — strongly justifying multi-horizon forecasts as actionable, rather than purely informational.</div>
+  <div class="insight"><strong>Disruption persistence, the key motivating finding</strong> Once average delay exceeds 10 min, there is an <em>~80% probability</em> the delay continues for at least 30 more minutes, strongly justifying multi-horizon forecasts as actionable, rather than purely informational.</div>
   <div class="img"><img src="a/disruption_persistence.png" alt="Disruption persistence"></div>
 </section>
 <section id="features">
@@ -191,7 +191,7 @@
     <div>
       <h3>Why segments?</h3>
       <ul>
-        <li>Months are non-consecutive — naive concatenation would inject false transitions.</li>
+        <li>Months are non-consecutive, naive concatenation would inject false transitions.</li>
         <li>LSTMs require contiguous time. Segments are split by a 30-min gap rule.</li>
         <li>Train / val / test split is <em>chronological inside each segment</em> (70 / 15 / 15) to avoid leakage.</li>
         <li><strong>Scaler is fit on the training portion only</strong>, then applied to val and test.</li>
@@ -235,7 +235,7 @@
         </tbody>
       </table>
     </div>
-    <div class="card"><h4>Why is the LSTM flatter than Ridge?</h4><p>Two reinforcing factors:</p><ul><li><strong>Limited data</strong> — only 4 non-consecutive months. Deep recurrent models are data-hungry; the inductive bias of Ridge wins on this regime.</li><li><strong>Strong linear autocorrelation</strong> — for short horizons, the lag-based linear model already captures most of the signal.</li></ul><p style="margin-top:10px">However, the LSTM degrades <em>more gracefully</em> at long horizons (its 6-h MAE ≈ 4.5 vs Ridge's 3.7 is closer than at short horizons), and provides a foundation for the probabilistic QR-LSTM.</p></div>
+    <div class="card"><h4>Why is the LSTM flatter than Ridge?</h4><p>Two reinforcing factors:</p><ul><li><strong>Limited data</strong>: only 4 non-consecutive months. Deep recurrent models are data-hungry; the inductive bias of Ridge wins on this regime.</li><li><strong>Strong linear autocorrelation</strong>: for short horizons, the lag-based linear model already captures most of the signal.</li></ul><p style="margin-top:10px">However, the LSTM degrades <em>more gracefully</em> at long horizons (its 6-h MAE ≈ 4.5 vs Ridge's 3.7 is closer than at short horizons), and provides a foundation for the probabilistic QR-LSTM.</p></div>
   </div>
   <div class="img"><img src="a/Schema_Seq2Seq.png" alt="Calibration pipeline plot"></div>
   <div class="img"><img src="a/curves_LSTM.png" alt="Calibration pipeline plot"></div>
@@ -249,14 +249,14 @@
       <h3>Method</h3>
       <ul>
         <li><strong>Quantile loss (pinball)</strong> for q ∈ {0.1, 0.5, 0.9}</li>
-        <li>Split-conformal correction adjusts interval bounds using validation residuals — distribution-free coverage guarantee</li>
+        <li>Split-conformal correction adjusts interval bounds using validation residuals, distribution-free coverage guarantee</li>
         <li>Median forecast (Q50) used as the point prediction → MAE / RMSE / R² / F1</li>
         <li>Interval quality measured by <em>coverage</em>, <em>width</em>, and <em>pinball loss</em></li>
       </ul>
     </div>
-    <div class="card best"><h4>Headline — best overall pipeline <span class="pill">+ Conformal</span></h4><p>Sharp short-horizon intervals with <strong>~88% coverage at t+30 min</strong> (slightly conservative, by design), and median-forecast MAE that <em>matches or beats Ridge</em> while delivering calibrated uncertainty bands for free.</p></div>
+    <div class="card best"><h4>Headline: best overall pipeline <span class="pill">+ Conformal</span></h4><p>Sharp short-horizon intervals with <strong>~88% coverage at t+30 min</strong> (slightly conservative, by design), and median-forecast MAE that <em>matches or beats Ridge</em> while delivering calibrated uncertainty bands for free.</p></div>
   </div>
-  <h3>Per-horizon test diagnostics — QR Ridge + Conformal</h3>
+  <h3>Per-horizon test diagnostics: QR Ridge + Conformal</h3>
   <table>
     <thead><tr><th>Horizon</th><th>MAE</th><th>RMSE</th><th>R²</th><th>Coverage 80</th><th>Width 80</th><th>Pinball Q50</th><th>F1</th></tr></thead>
     <tbody>
@@ -279,7 +279,7 @@
     </div>
   </div>
 <div class="img"><img src="a/uncertainty_timeseries.png" alt="Uncertainty timeseries plot"></div>
-  <div class="insight ok"><strong>Why conformal calibration matters</strong> Without it, raw QR intervals reached only <em>40.9% coverage</em> against the 80% target. Adding split-conformal correction restores nominal coverage uniformly across horizons — and it is distribution-free.</div>
+  <div class="insight ok"><strong>Why conformal calibration matters</strong> Without it, raw QR intervals reached only <em>40.9% coverage</em> against the 80% target. Adding split-conformal correction restores nominal coverage uniformly across horizons, and it is distribution-free.</div>
 </section>
 <section id="qrlstm">
   <h2><span class="step">STEP 08</span> Quantile Regression LSTM</h2>
@@ -316,7 +316,7 @@
 </section>
 <section id="conclusions">
   <h2>Conclusions &amp; Recommendations</h2>
-  <h3>Model comparison — point forecast</h3>
+  <h3>Model comparison: point forecast</h3>
   <table>
     <thead><tr><th>Model</th><th>MAE t+30</th><th>MAE t+180</th><th>MAE t+360</th><th>Calibrated intervals</th><th>Verdict</th></tr></thead>
     <tbody>
@@ -336,9 +336,9 @@
   <h3>Recommendations</h3>
   <ol style="padding-left:22px">
     <li><strong>Deploy QR Ridge + Conformal</strong> for the 30-min to 2-h dispatcher-alert window. Trigger an alert when Q50 &gt; 10 min, escalate when Q10 &gt; 10 min.</li>
-    <li><strong>Use Historical Mean</strong> for the 4–6 h planning window — simpler and more stable than ML when autocorrelation has decayed.</li>
+    <li><strong>Use Historical Mean</strong> for the 4–6 h planning window, simpler and more stable than ML when autocorrelation has decayed.</li>
     <li><strong>Feed event calendars</strong> systematically: events overlap 56% of windows and are demonstrably predictive.</li>
-    <li><strong>Collect a full year</strong> of consecutive data — the single highest-leverage improvement, especially to unlock the QR-LSTM.</li>
+    <li><strong>Collect a full year</strong> of consecutive data, the single highest-leverage improvement, especially to unlock the QR-LSTM.</li>
     <li><strong>Monitor calibration weekly</strong>: track empirical coverage and MAE drift; recalibrate the conformal residuals quarterly.</li>
   </ol>
 </section>
